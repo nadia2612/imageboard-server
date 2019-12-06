@@ -1,10 +1,15 @@
-router.post("/image", (req, res, next) => {
-  Image.create(req.body)
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      console.log("got here");
+const Sequelize = require("sequelize");
+const db = require("../db");
 
-      next(err);
-    });
+
+
+const Image = db.define(
+  'image',
+  {
+  url: Sequelize.STRING,
+  title: Sequelize.STRING,
+    
+  }
+)
+
+module.exports = Image;
